@@ -14,7 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CSTOR_ORG="mayadata-io"
+if [ -z "${CSTOR_ORG}" ]; then
+  echo "CSTOR_ORG variable not set. Required for fetching dependent build repositories"
+  exit 1
+else
+  echo "Using cstor organization: ${CSTOR_ORG}"
+fi
+
 
 # enable gtest for builds
 cd /usr/src/gtest && \
